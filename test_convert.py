@@ -15,7 +15,7 @@ import caffe
 
 caffe.set_mode_cpu()
 #model_net = caffe.Net('./bnn/deploy_68_new.prototxt', './bnn/vgg_68_new.caffemodel', caffe.TEST)
-result_net = caffe.Net('./bnn/result.prototxt', './bnn/result.caffemodel', caffe.TEST)
+result_net = caffe.Net('./models/result.prototxt', './models/result.caffemodel', caffe.TEST)
 
 im = cv2.imread('10.jpg')
 im.resize(60, 60, 3)
