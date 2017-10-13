@@ -64,8 +64,6 @@ For MORE details about batch normalization，see [here](https://arxiv.org/abs/15
 ## Demo
 
 #### Note: 
-The network of the demo contains the ROI layer, make sure u are in a Pre-compiled environment of [fasterRCNN](https://github.com/rbgirshick/py-faster-rcnn). If U want to convert your own model, you can put the script into your own environment.
-
 
 RUN
 ``
