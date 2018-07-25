@@ -18,7 +18,8 @@ caffe.set_mode_cpu()
 layer_type = ['Convolution', 'InnerProduct']
 bnn_type = ['BatchNorm', 'Scale']
 temp_file = './temp.prototxt'
- 
+EPS = 1e-6
+
 def parse_args():
     """Parse input arguments."""
     parser = argparse.ArgumentParser(description='convert prototxt to prototxt without batch normalization')
@@ -173,7 +174,7 @@ class ConvertBnn:
                 channels = self.net_model.params[param_layers[i-1].name][0].num
                 scale = self.net_model.params[param_layers[i-1].name][2].data[0]
                 mean = self.net_model.params[param_layers[i-1].name][0].data / scale
-                std = np.sqrt(self.net_model.params[param_layers[i-1].name][1].data / scale)
+                std = np.sqrt(self.net_model.params[param_layers[i-1].name][1].data / scale) + EPS
                 a = copy.deepcopy(self.net_model.params[param_layers[i].name][0].data)
                 b = copy.deepcopy(self.net_model.params[param_layers[i].name][1].data)
                 for k in xrange(channels):
